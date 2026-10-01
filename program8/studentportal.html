@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Portal Login</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg, #06b6d4, #2563eb);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 850px;
+            display: flex;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+        }
+
+        .left {
+            width: 50%;
+            background: linear-gradient(135deg, #1e40af, #06b6d4);
+            color: white;
+            padding: 50px;
+        }
+
+        .left h1 {
+            font-size: 40px;
+        }
+
+        .right {
+            width: 50%;
+            padding: 45px;
+        }
+
+        .right h2 {
+            color: #2563eb;
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 15px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 15px;
+            text-align: center;
+            color: #15803d;
+            font-weight: bold;
+        }
+
+        @media(max-width:700px) {
+            .container {
+                width: 90%;
+                flex-direction: column;
+            }
+
+            .left,
+            .right {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function WelcomePanel() {
+
+    return (
+        <div className="left">
+
+            <h1> </h1>
+
+            <h1>Student Portal</h1>
+
+            <p>
+                Welcome to the student management
+                and learning portal.
+            </p>
+
+            <p> Courses</p>
+            <p> Academic Results</p>
+            <p> Assignments</p>
+            <p> Student Profile</p>
+
+        </div>
+    );
+}
+
+function LoginForm() {
+
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [message, setMessage] = React.useState("");
+
+    function login() {
+
+        if (email === "" || password === "") {
+
+            setMessage("Please enter all details.");
+
+        } else {
+
+            setMessage("Login successful ");
+
+        }
+    }
+
+    return (
+        <div className="right">
+
+            <h2>Student Login</h2>
+
+            <input
+                type="email"
+                placeholder="Student Email"
+                value={email}
+                onChange={(e) =>
+                    setEmail(e.target.value)
+                }
+            />
+
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) =>
+                    setPassword(e.target.value)
+                }
+            />
+
+            <button onClick={login}>
+                Login
+            </button>
+
+            {message && (
+                <div className="message">
+                    {message}
+                </div>
+            )}
+
+        </div>
+    );
+}
+
+function App() {
+
+    return (
+        <div className="container">
+
+            <WelcomePanel />
+
+            <LoginForm />
+
+        </div>
+    );
+}
+
+ReactDOM.createRoot(
+    document.getElementById("root")
+).render(<App />);
+
+</script>
+
+</body>
+</html>

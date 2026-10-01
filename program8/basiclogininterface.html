@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React Login Interface</title>
+
+    <!-- React Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            width: 400px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h1 {
+            color: #4f46e5;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #4f46e5;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #3730a3;
+        }
+
+        .message {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #eef2ff;
+            color: #3730a3;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function LoginForm() {
+
+    const [username, setUsername] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [message, setMessage] = React.useState("");
+
+    function handleLogin() {
+
+        if (username === "" || password === "") {
+
+            setMessage(" Please enter username and password.");
+
+        } else {
+
+            setMessage(" Login successful! Welcome " + username);
+
+        }
+    }
+
+    return (
+        <div className="login-box">
+
+            <h1> Login</h1>
+
+            <p>React Based Login Interface</p>
+
+            <input
+                type="text"
+                placeholder="Enter Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+            />
+
+            <input
+                type="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <button onClick={handleLogin}>
+                Login
+            </button>
+
+            {message && (
+                <div className="message">
+                    {message}
+                </div>
+            )}
+
+        </div>
+    );
+}
+
+function App() {
+
+    return (
+        <LoginForm />
+    );
+
+}
+
+ReactDOM.createRoot(
+    document.getElementById("root")
+).render(<App />);
+
+</script>
+
+</body>
+</html>

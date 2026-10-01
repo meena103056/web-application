@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg,#ef4444,#f97316);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .content {
+            padding: 35px;
+        }
+
+        .mark {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            background: #fff7ed;
+            font-size: 17px;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            background: linear-gradient(135deg,#fb7185,#f97316);
+            color: white;
+        }
+
+        .result h2 {
+            font-size: 35px;
+            margin: 10px;
+        }
+
+        .footer {
+            background: #431407;
+            color: white;
+            text-align: center;
+            padding: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function Marks() {
+
+    const marks = {
+        Python: 85,
+        Java: 78,
+        Database: 92,
+        Web: 88
+    };
+
+    const total =
+        marks.Python +
+        marks.Java +
+        marks.Database +
+        marks.Web;
+
+    const average = total / 4;
+
+    return (
+        <div className="content">
+
+            <div className="mark">
+                <span> Python</span>
+                <b>{marks.Python}</b>
+            </div>
+
+            <div className="mark">
+                <span> Java</span>
+                <b>{marks.Java}</b>
+            </div>
+
+            <div className="mark">
+                <span> Database</span>
+                <b>{marks.Database}</b>
+            </div>
+
+            <div className="mark">
+                <span> Web Technology</span>
+                <b>{marks.Web}</b>
+            </div>
+
+            <div className="result">
+
+                <p>Total Marks</p>
+                <h2>{total}</h2>
+
+                <p>Average: {average.toFixed(2)}%</p>
+
+                <p>Result: PASS </p>
+
+            </div>
+
+        </div>
+    );
+}
+
+function App() {
+
+    return (
+        <div className="container">
+
+            <div className="header">
+                <h1> Student Marks</h1>
+                <p>Functional Component using JSX</p>
+            </div>
+
+            <Marks />
+
+            <div className="footer">
+                React Marks Calculation Application
+            </div>
+
+        </div>
+    );
+}
+
+ReactDOM.createRoot(
+    document.getElementById("root")
+).render(<App />);
+
+</script>
+
+</body>
+</html>

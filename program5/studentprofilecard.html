@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Profile</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5, #9333ea);
+            color: white;
+            text-align: center;
+            padding: 35px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .profile {
+            text-align: center;
+            padding: 35px;
+        }
+
+        .profile-icon {
+            width: 120px;
+            height: 120px;
+            margin: auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+        }
+
+        .profile h2 {
+            margin-top: 20px;
+            color: #4f46e5;
+        }
+
+        .details {
+            margin-top: 25px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .detail {
+            padding: 15px;
+            border-radius: 10px;
+            background: #f3f4f6;
+            font-size: 17px;
+        }
+
+        .footer {
+            background: #1e1b4b;
+            color: white;
+            text-align: center;
+            padding: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function StudentDetails() {
+
+    return (
+        <div className="profile">
+
+            <div className="profile-icon">
+                
+            </div>
+
+            <h2>Meena S</h2>
+
+            <div className="details">
+
+                <div className="detail">
+                     Course: M.Sc Computer Science
+                </div>
+
+                <div className="detail">
+                     Register No: 26MCS025
+                </div>
+
+                <div className="detail">
+                     Department: Computer Science
+                </div>
+
+                <div className="detail">
+                     Email: student@example.com
+                </div>
+
+            </div>
+
+        </div>
+    );
+}
+
+function App() {
+
+    return (
+        <div className="container">
+
+            <div className="header">
+                <h1> Student Profile</h1>
+                <p>React Functional Component & JSX</p>
+            </div>
+
+            <StudentDetails />
+
+            <div className="footer">
+                React Student Profile Application
+            </div>
+
+        </div>
+    );
+}
+
+ReactDOM.createRoot(
+    document.getElementById("root")
+).render(<App />);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React Temperature Converter</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            width: 450px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: white;
+        }
+
+        h2 {
+            color: #ea580c;
+        }
+
+        input {
+            width: 80%;
+            padding: 13px;
+            margin: 15px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 17px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 7px;
+            background: #ea580c;
+            color: white;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff7ed;
+            border-radius: 10px;
+        }
+
+        .value {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ea580c;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1> Temperature Converter</h1>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function Temperature(props) {
+
+    const [celsius, setCelsius] = React.useState("");
+    const [fahrenheit, setFahrenheit] = React.useState("");
+
+    function convert() {
+
+        let c = Number(celsius);
+
+        let f = (c * 9 / 5) + 32;
+
+        setFahrenheit(f.toFixed(2));
+
+    }
+
+    function reset() {
+
+        setCelsius("");
+        setFahrenheit("");
+
+    }
+
+    return (
+        <div className="card">
+
+            <h2>{props.title}</h2>
+
+            <p>
+                <b>Conversion:</b> {props.type}
+            </p>
+
+            <input
+                type="number"
+                placeholder="Enter Celsius"
+                value={celsius}
+                onChange={(e) =>
+                    setCelsius(e.target.value)
+                }
+            />
+
+            <br />
+
+            <button onClick={convert}>
+                Convert
+            </button>
+
+            <button onClick={reset}>
+                Reset
+            </button>
+
+            <div className="result">
+
+                <h3>Fahrenheit</h3>
+
+                <div className="value">
+                    {fahrenheit} °F
+                </div>
+
+            </div>
+
+        </div>
+    );
+}
+
+function App() {
+
+    return (
+        <Temperature
+            title="Temperature Converter"
+            type="Celsius to Fahrenheit"
+        />
+    );
+}
+
+ReactDOM.createRoot(
+    document.getElementById("root")
+).render(<App />);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React Registration Form</title>
+
+    <!-- React Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .card {
+            background: white;
+            width: 420px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            color: white;
+        }
+
+        h2 {
+            color: #4f46e5;
+        }
+
+        input {
+            width: 85%;
+            padding: 12px;
+            margin: 8px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 7px;
+            background: #4f46e5;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #3730a3;
+        }
+
+        .error {
+            color: #dc2626;
+            font-size: 14px;
+        }
+
+        .success {
+            margin-top: 15px;
+            padding: 12px;
+            background: #dcfce7;
+            color: #15803d;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>📝 Registration Form</h1>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function Registration() {
+
+    const [name, setName] = React.useState("");
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [message, setMessage] = React.useState("");
+
+    function registerUser() {
+
+        if (name === "" || email === "" || password === "") {
+
+            setMessage(" Please fill all fields.");
+
+        } else if (password.length < 6) {
+
+            setMessage(" Password must contain at least 6 characters.");
+
+        } else {
+
+            setMessage("Registration successful!");
+
+        }
+    }
+
+    return (
+        <div className="card">
+
+            <h2>Register User</h2>
+
+            <input
+                type="text"
+                placeholder="Enter Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
+
+            <input
+                type="email"
+                placeholder="Enter Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+
+            <input
+                type="password"
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <br />
+
+            <button onClick={registerUser}>
+                Register
+            </button>
+
+            {message && (
+                <div className={
+                    message.includes("successful")
+                    ? "success"
+                    : "error"
+                }>
+                    {message}
+                </div>
+            )}
+
+        </div>
+    );
+}
+
+function App() {
+    return <Registration />;
+}
+
+ReactDOM.createRoot(
+    document.getElementById("root")
+).render(<App />);
+
+</script>
+
+</body>
+</html>

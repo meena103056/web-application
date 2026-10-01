@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Show and Hide</title>
+</head>
+<body>
+
+<h2>JavaScript DOM</h2>
+
+<p id="message">
+    JavaScript can make webpages dynamic
+    using DOM manipulation and events.
+</p>
+
+<button onclick="showText()">Show</button>
+<button onclick="hideText()">Hide</button>
+
+<script>
+function showText() {
+    document.getElementById("message").style.display = "block";
+}
+
+function hideText() {
+    document.getElementById("message").style.display = "none";
+}
+</script>
+
+</body>
+</html>

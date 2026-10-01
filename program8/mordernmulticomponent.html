@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React Login System</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 850px;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0,0,0,.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .content {
+            padding: 40px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .info {
+            width: 45%;
+            background: #f5f3ff;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .login {
+            width: 55%;
+        }
+
+        h2 {
+            color: #7c3aed;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #7c3aed;
+            color: white;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 12px;
+            background: #f3e8ff;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: #1e1b4b;
+            color: white;
+        }
+
+        @media(max-width:700px) {
+            .container {
+                width: 90%;
+            }
+
+            .content {
+                flex-direction: column;
+            }
+
+            .info,
+            .login {
+                width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function Header() {
+
+    return (
+        <div className="header">
+
+            <h1> React Login System</h1>
+
+            <p>
+                Component-Based Login Architecture
+            </p>
+
+        </div>
+    );
+}
+
+function Information() {
+
+    return (
+        <div className="info">
+
+            <h2> Welcome </h2>
+
+            <p>
+                Login to access your account.
+            </p>
+
+            <p> Secure Login</p>
+
+            <p> User Management</p>
+
+            <p> Dashboard</p>
+
+            <p> Account Settings</p>
+
+        </div>
+    );
+}
+
+function LoginForm() {
+
+    const [username, setUsername] = React.useState("");
+    const [password, setPassword] = React.useState("");
+    const [message, setMessage] = React.useState("");
+
+    function handleLogin() {
+
+        if (username === "" || password === "") {
+
+            setMessage("❌ Enter username and password.");
+
+        } else {
+
+            setMessage(
+                " Welcome " + username + "!"
+            );
+
+        }
+    }
+
+    return (
+        <div className="login">
+
+            <h2>User Login</h2>
+
+            <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) =>
+                    setUsername(e.target.value)
+                }
+            />
+
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) =>
+                    setPassword(e.target.value)
+                }
+            />
+
+            <button onClick={handleLogin}>
+                Login
+            </button>
+
+            {message && (
+                <div className="message">
+                    {message}
+                </div>
+            )}
+
+        </div>
+    );
+}
+
+function Footer() {
+
+    return (
+        <div className="footer">
+
+            React Based Login Application © 2026
+
+        </div>
+    );
+}
+
+function App() {
+
+    return (
+        <div className="container">
+
+            <Header />
+
+            <div className="content">
+
+                <Information />
+
+                <LoginForm />
+
+            </div>
+
+            <Footer />
+
+        </div>
+    );
+}
+
+ReactDOM.createRoot(
+    document.getElementById("root")
+).render(<App />);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>React To Do List</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial;
+            min-height: 100vh;
+            background: linear-gradient(135deg,#43cea2,#185a9d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,.3);
+        }
+
+        .header {
+            background: linear-gradient(135deg,#059669,#0284c7);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .task {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            margin: 12px 0;
+            background: #f0fdfa;
+            border-radius: 12px;
+            border-left: 5px solid #10b981;
+        }
+
+        .done {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        button {
+            border: none;
+            padding: 9px 15px;
+            border-radius: 8px;
+            background: #ef4444;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: .8;
+        }
+
+        .footer {
+            background: #082f49;
+            color: white;
+            text-align: center;
+            padding: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+function TodoList() {
+
+    const [tasks, setTasks] = React.useState([
+        "Study React",
+        "Complete Assignment",
+        "Practice JavaScript"
+    ]);
+
+    function removeTask(index) {
+
+        const newTasks = tasks.filter(
+            (_, i) => i !== index
+        );
+
+        setTasks(newTasks);
+    }
+
+    return (
+        <div className="content">
+
+            {tasks.map((task, index) => (
+
+                <div className="task" key={index}>
+
+                    <span>{task}</span>
+
+                    <button
+                        onClick={() => removeTask(index)}
+                    >
+                        Delete
+                    </button>
+
+                </div>
+
+            ))}
+
+        </div>
+    );
+}
+
+function App() {
+
+    return (
+        <div className="container">
+
+            <div className="header">
+                <h1>📝 To-Do List</h1>
+                <p>React Functional Component</p>
+            </div>
+
+            <TodoList />
+
+            <div className="footer">
+                React JSX To-Do Application
+            </div>
+
+        </div>
+    );
+}
+
+ReactDOM.createRoot(
+    document.getElementById("root")
+).render(<App />);
+
+</script>
+
+</body>
+</html>

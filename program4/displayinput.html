@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Input</title>
+</head>
+<body>
+
+<h2>Enter Your Name</h2>
+
+<input type="text" id="name" placeholder="Enter your name">
+
+<button onclick="displayName()">Submit</button>
+
+<h3 id="result"></h3>
+
+<script>
+function displayName() {
+
+    let name = document.getElementById("name").value;
+
+    if (name == "") {
+        document.getElementById("result").innerHTML =
+            "Please enter your name";
+    }
+    else {
+        document.getElementById("result").innerHTML =
+            "Hello, " + name + "!";
+    }
+}
+</script>
+
+</body>
+</html>
